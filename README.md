@@ -93,3 +93,40 @@ To make git not track `node_modules` or `.env`, a `.gitignore` file was added wi
 node_modules
 .env
 ```
+
+### Template boilerplate configuration (Materialize jumpstart)
+
+To match our class example structure, a few things are changed from the initial configuration:
+
+1. In the `public` folder:
+
+   - the sub-folders `stylesheets` and `javascripts` are renamed `styles` and `js`, respectively.
+
+   - `materialize.min.css` and `main.css` have been added to the folder `/public/styles/`
+
+   - `style.css` is edited lightly (a line is commented out)
+
+   - `materialize.min.js` has been added to the folder `/public/js/`
+
+
+2. To make getting started very easy, `layout.hbs` has been pre-configured with some standard Materialize boilerplate. 
+
+    Here are the added features: 
+
+    - The `<head>` includes a link to a (*currently nonexistent*) favicon.
+
+    - The `<head>` includes links to the Materialize CSS file and Material icons
+
+    - The `<head>` also includes a link to the `main.css` stylesheet
+
+    - The `<head>` contains Handlebars expressions that allow for express to includes addition stylesheets by name via a `style` or `styles` property in the data object.
+
+    - The `<body>` of the layout now includes a sample `<header>`, which includes a mobile-friendly nav bar, and a `<footer>`.
+
+    - The `<body>` contains an external script link to the Materialize JS, and an in-line script that runs the `M.AutoInit()` function needed to make certain Materialize elements work.
+
+3. `index.js` is updated to specify using the `style.css` file, by passing it as`style` in the data object parameter for the render.
+
+4. `users.js` is deleted
+
+5. `app.js` is edited to remove the `usersRouter` router.
