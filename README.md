@@ -22,8 +22,12 @@ You can run the server in one of two ways:
   ```
   This should automatically restart the server upon changes to your files. Manually restart by typing `rs` in the Terminal; stop with `Ctrl-C`
 
+
+> See "The sample files" section at the bottom; these give an idea of how you might add new data-driven routes to the app. You can alter or delete the sample files whenever you want.
+
 ## How was this built?
 
+If you're curious how this template was built, read on. Otherwise, just take the template and go!
 
 ### Basic configuration
 The app's skeleton structure was generated with:
@@ -130,3 +134,46 @@ To match our class example structure, a few things are changed from the initial 
 4. `users.js` is deleted
 
 5. `app.js` is edited to remove the `usersRouter` router.
+
+### The sample files
+
+A series of sample files are included to see how new routes, pages (templates), stylesheets, and queries might be incorporated.
+
+1. First, `sample.js` is added to the `routes` folder. Keys parts at the beginning are:
+    ```js
+    var express = require('express');
+    var router = express.Router();
+
+    //require the fs and path modules
+    const fs = require('fs');
+    const path = require('path');
+
+    //require the database connection module 
+    const db = require('../db/db.js');
+    ```
+
+    and at the end also:
+    ```js
+    modules.exports = router
+    ```
+
+2. To make the new router used by the server, `app.js` was updated with these lines:
+
+    ```js
+    ...
+
+    var sampleRouter = require('./routes/sample');
+
+    ... //app is set up...
+
+    app.use('/sample', sampleRouter);
+
+    ...
+    ```
+
+3. As `sample.js`'s routes are written, the following files are referenced and used:
+    - SQL queries in `sample_query.sql` and `sample_query_placeholders.sql`, which are in a new subdirectory `db/queries`. These include very silly and pointless queries that any database will respond the same to.  (Using separate SQL files is optional, as the SQL could be written as strings in `sample.js`)
+    - Handlebars templates: `sample.hbs`, `sample_parameter.hbs`, and `sample_form.hbs`
+    - A new CSS file, `sample_style.css`. To use both this and the `style.css` for the pages, the `res.render` is passed a `styles` property in the data, which has an array of all relevant stylesheets.
+
+You can alter or delete the sample files whenever you want. 
