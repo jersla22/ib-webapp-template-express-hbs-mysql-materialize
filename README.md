@@ -1,31 +1,35 @@
 ## Using this as a template:
-Fork this project to create a template. Then, clone this new project.
+1. Fork this project, giving it a new name. 
 
-Run this to install all dependencies (which are listed in `package.json`). This will create the `node_modules` folder and `package-lock.json`
+2. Then, clone your new project, and open in VSCode.
 
-```
-> npm install
-```
+3. In your Terminal, run this to install all dependencies (which are listed in `package.json`). 
+    ```
+    > npm install
+    ```
+    This will create the `node_modules` folder and `package-lock.json`
 
-Copy the file `.sample-env` and rename the copy `.env`. 
-Add the configuration values for your database into `.env`:
-
-You can run the server in one of two ways:
-1. Standard server start (essentially runs `node ./bin/www`)
-  ```
-  > npm start
-  ```
-  This can be stopped with `Ctrl-C`.
-2. Nodemon server start:
-  ```
-  > npm run devstart
-  ```
-  This should automatically restart the server upon changes to your files. Manually restart by typing `rs` in the Terminal; stop with `Ctrl-C`
+4. Copy the file `.sample-env` and rename the copy `.env`. 
+Add the configuration values for your database into `.env`.
 
 
-> See "The sample files" section at the bottom; these give an idea of how you might add new data-driven routes to the app. You can alter or delete the sample files whenever you want.
+5. You can run the server in one of two ways:
+    - Standard server start (essentially runs `node ./bin/www`)
+        ```
+        > npm start
+        ```
+        Stop the server with `Ctrl-C`.
+        
+    - Nodemon server start:
+        ```
+        > npm run devstart
+        ```
+        This should automatically restart the server upon changes to your files. Manually restart by typing `rs` in the Terminal; stop with `Ctrl-C`
 
-## How was this built?
+
+6. Read ["The sample files" section at the bottom](https://github.com/atcs-wang/ib-webapp-template-express-hbs-mysql-materialize#the-sample-files); these give an idea of how you might add new data-driven routes to the app. You can alter or delete the sample files whenever you want.
+
+## Um, how was this built?
 
 If you're curious how this template was built, read on. Otherwise, just take the template and go!
 
