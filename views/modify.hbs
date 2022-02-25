@@ -1,0 +1,67 @@
+<main>
+ <form id="create_update_appointment" method="post" action="/appointmentform">
+      <!-- action and method depend on C vs U-->
+      <input type="hidden" name="appointment_id" id="appointment_id" value="0">
+      <!-- server sets event_id value-->
+
+      <div class="container">
+        <div class="card grey lighten-4">
+          <div class="card-content">
+
+            <span class="card-title">
+              <h1>Modify Appointment for id="patient_name"</h1>
+            </span>
+
+
+            
+
+            <!-- https://materializecss.com/select.html -->
+            <div class="row">
+              <div class="input-field col s6">
+                <select id="category_id" name="category_id" required>
+                  <option value="" disabled selected>Select a category</option>
+                  <option value="Screening">Screening</option>
+                  <option value="Consultation">Consultation</option>
+                  <option value="Pain Management">Pain Management</option>
+                  <option value="Prolotherapy">Prolotype</option>
+                </select>
+              
+              </div>
+
+              
+
+            <div class="row">
+              <div class="input-field col s4">
+                <input type="text" id=event_date name="event_date" class="datepicker no-autoinit" required>
+                <label for="event_date">Date</label>
+              </div>
+
+              <div class="input-field col s4">
+                <input type="text" id="appointment_time" name="appointment_time" class="timepicker no-autoinit" twelveHour=true
+                  required>
+                <label for="appointment_time">Time</label>
+              </div>
+
+              <div class="input-field col s4">
+                <input type="number" id="appointment_duration" name="appointment_duration" min=0 step=15>
+                <label for="appointment_duration">Length</label>
+
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea id="appointment_description" class="materialize-textarea" data-length="500"></textarea>
+                <label for="appointment_description">Description</label>
+              </div>
+            </div>
+
+            <div class="button_wrapper">
+              <a href="/doctor" class="waves-effect waves-light btn">Modify</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </main>

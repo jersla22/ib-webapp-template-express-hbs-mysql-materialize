@@ -1,49 +1,47 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>{{title}}</title>
-    <link rel="shortcut icon" type="image/jpg" href="/images/favicon.ico" />
+ <!DOCTYPE html>
+ <html lang="en">
 
-    <!-- Compiled and minified Materialize CSS and icons -->
-    <link rel="stylesheet" href="/styles/materialize.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+ 
+ <head>
+   <meta charset="UTF-8">
+ 
+   <title>Regenerative Healing Center</title>
+ 
+   <!-- Compiled and minified CSS -->
+   <link rel="stylesheet" href="/styles/materialize.min.css">
+   <!-- Compiled and minified CSS -->
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+           
+   <!-- Page specific CSS -->
+   <link rel="stylesheet" href="/styles/main.css">
+   <link rel="stylesheet" href="/styles/index.css">
 
-    <!-- Shared site-wide CSS  -->
-    <link rel="stylesheet" href="/styles/main.css">
-
-    <!-- Additional CSS  -->
-    {{#if style}}
-    <link rel="stylesheet" href="/styles/{{style}}">
-    {{/if}}
-
-    {{#each styles}}
-    <link rel="stylesheet" href="/styles/{{this}}">
-    {{/each}}
-    </head>
-  <body>
-    
-  <!-- https://materializecss.com/navbar.html -->
-  <header>
-    <nav>
-      <div class="nav-wrapper">
-        {{!-- <img class="hide-on-small-and-down" src="/images/LOGO_FILE"> --}}
-        <a href="/" class="brand-logo">WEB APP NAME LOGO</a>
-        <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        <ul id="desktop-nav" class="right hide-on-med-and-down">
-          <li><a href="/page1"><i class="material-icons left">looks_one</i>Page 1</a></li>
-          <li><a href="/page2"><i class="material-icons left">looks_two</i>Page 2</a></li>
-          <li><a href="/page3"><i class="material-icons left">looks_3</i>Page 3</a></li>
-          {{!-- <li><a href="/login" class="btn">Login / Register</a></li> --}}
-        </ul>
-      </div>
-    </nav>
-    <ul id="mobile-nav" class="sidenav">
-      <li><a href="/page1"><i class="material-icons left">looks_one</i>Page 1</a></li>
-      <li><a href="/page2"><i class="material-icons left">looks_two</i>Page 2</a></li>
-      <li><a href="/page3"><i class="material-icons left">looks_3</i>Page 3</a></li>
-      {{!-- <li><a href="/login" class="btn">Login / Register</a></li> --}}
-    </ul>
-  </header>
+ </head>
+ 
+ <body>
+            
+   <!-- https://materializecss.com/navbar.html -->
+   <header>
+     <nav>
+       <div class="nav"> 
+         <a href="/" target="_blank"><img src="/images/rhc.jpeg"alt="RHC logo" title="RHC logo"></a>
+         <a href="/" class="brand-logo">Regnerative Healing Center</a>
+         <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+         <ul id="desktop-nav" class="right hide-on-med-and-down">
+           <li><a href="/index"><i class="material-icons left">home</i>Home</a></li>
+           <li><a href="/patient"><i class="material-icons left">child_care</i>Patients</a></li>
+           <li><a href="/doctor"><i class="material-icons left">face</i>Doctor</a></li>
+           <li><a href="/login" class="btn">Login</a></li>
+         </ul>
+       </div>
+     </nav>
+     <ul id="mobile-nav" class="sidenav">
+       <li><a href="/index"><i class="material-icons left">home</i>Home</a></li>
+       <li><a href="/patient"><i class="material-icons left">child_care</i>Patients</a></li>
+       <li><a href="/doctor"><i class="material-icons left">face</i>Doctor</a></li>
+       <li><a href="/login" class="btn">Login</a></li>
+     </ul>
+   </header>
 
 
     <main>
@@ -54,8 +52,7 @@
     <footer class="page-footer">
       <div class="footer-copyright">
         <div class="container">
-          © 2021 Copyright Text
-          <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+          © 2022 Jeremy Slaten
         </div>
       </div>
     </footer>

@@ -23,3 +23,17 @@ nav {
 .page-footer {
     background-color: #1e88e5; 
 }
+
+header img{
+    border-radius: 50%;
+    height: 50px;
+}
+
+header .nav{
+    background-color: blue;
+}
+
+footer{
+    background-color: blue;
+    color: white;
+}
