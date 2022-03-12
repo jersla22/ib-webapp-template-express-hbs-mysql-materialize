@@ -1,7 +1,7 @@
 <main> 
-    <form id="create_update_appointment" method="post" action="/appointmentform">
+    <form id="create_update_patient" method="post" action="/patientform">
       <!-- action and method depend on C vs U-->
-      <input type="hidden" name="appointment_id" id="appointment_id" value="0">
+      <input type="hidden" name="patient_id" id="patient_id" value="0">
       <!-- server sets event_id value-->
 
       <div class="container">
@@ -13,38 +13,36 @@
             </span>
 
 
-
-
-              
-
-            <div class="row">
-              <div class="input-field col s4">
-                <input type="text" id=patient_id name="first_name" class="datepicker no-autoinit" required>
-                <label for="first_name">First Name</label>
-              </div>
-
-              <div class="input-field col s4">
-                <input type="text" id="patient_id" name="last_name" class="timepicker no-autoinit" twelveHour=true
-                  required>
-                <label for="last_name">Last Name</label>
-              </div>
-
-              <div class="input-field col s4">
-                <input type="text" id="patient_id" name="email" min=0 step=15>
-                <label for="email">Email</label>
-
-              </div>
-            </div>
-
             <div class="row">
               <div class="input-field col s12">
-                <input type="text" class="phone_number" data-length="500"></textarea>
-                <label for="phone_number">Phone Number</label>
+                <textarea id="first_name" name="first_name" class="materialize-textarea" data-length="250"></textarea>
+                <label for="first_name">First Name</label>
               </div>
             </div>
 
+              <div class="input-field col s12">
+                <textarea id="last_name" name="last_name" class="materialize-textarea" data-length="250"></textarea>
+                <label for="last_name">Last Name</label>
+              </div>
+            
+
+              <div class="input-field col s12">
+                <textarea id="email_address" name="email_address" class="materialize-textarea" data-length="250"></textarea>
+                <label for="email_addres">Email</label>
+              </div>
+           
+
+
+       
+              <div class="input-field col s12">
+                <textarea id="phone_number" name="phone_number" rs
+                class="materialize-textarea" data-length="250"></textarea>
+                <label for="phone_number">Phone Number</label>
+              </div>
+            
+
             <div class="button_wrapper">
-              <a href="/doctor" class="waves-effect waves-light btn">Create</a>
+              <button class="waves-effect waves-light btn" type="submit">Create</button>
             </div>
           </div>
         </div>
@@ -52,3 +50,21 @@
       </div>
     </form>
   </main>
+  <script>
+    {{#with patient_data}}
+        document.addEventListener('DOMContentLoaded', function() {
+
+          {{!-- Use triple mustaches to NOT escape characters --}}
+
+          document.getElementById("patient_id").value = "{{{patient_id}}}"
+          document.getElementById("first_name").value = "{{{first_name}}}";
+          document.getElementById("last_name").value = "{{{last_name}}}";
+          document.getElementById("email_address").value = "{{{email_address}}}";
+          document.getElementById("phone_number").value = "{{{phone_number}}}"
+          
+          var elems = document.querySelectorAll('select');
+          var instances = M.FormSelect.init(elems, {});
+      });
+
+    {{/with}}
+  </script>

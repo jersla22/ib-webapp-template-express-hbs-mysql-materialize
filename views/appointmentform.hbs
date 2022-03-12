@@ -1,7 +1,7 @@
 <main>
-    <form id="create_update_appointment" method="post" action="/appointmentform">
+    <form id="create_update_appointment" method="POST" action="/appointmentform">
       <!-- action and method depend on C vs U-->
-      <input type="hidden" name="appointment_id" id="appointment_id" value="0">
+      <input type="hidden" name="patient_id" id="patient_id" value="0">
       <!-- server sets event_id value-->
 
       <div class="container">
@@ -9,7 +9,7 @@
           <div class="card-content">
 
             <span class="card-title">
-              <h1>Create Appointment for id="patient_name"</h1>
+              <h1>Create Appointment for {{appointment_new.first_name}} {{appointment_new.last_name}}</h1>
             </span>
 
 
@@ -20,10 +20,10 @@
               <div class="input-field col s6">
                 <select id="category_id" name="category_id" required>
                   <option value="" disabled selected>Select a category</option>
-                  <option value="Screening">Screening</option>
-                  <option value="Consultation">Consultation</option>
-                  <option value="Pain Management">Pain Management</option>
-                  <option value="Prolotherapy">Prolotype</option>
+                  <option value="1">Screening</option>
+                  <option value="2">Consultation</option>
+                  <option value="3">Pain Management</option>
+                  <option value="4">Prolotype</option>
                 </select>
                 
                
@@ -33,7 +33,7 @@
 
             <div class="row">
               <div class="input-field col s4">
-                <input type="text" id=event_date name="event_date" class="datepicker no-autoinit" required>
+                <input type="text" id=event_date name="appointment_date" class="datepicker no-autoinit" required>
                 <label for="event_date">Date</label>
               </div>
 
@@ -44,7 +44,7 @@
               </div>
 
               <div class="input-field col s4">
-                <input type="number" id="appointment_duration" name="appointment_duration" min=0 step=15>
+                <input type="number" id="appointment_duration" name="length" min=0 step=5>
                 <label for="appointment_duration">Length</label>
 
               </div>
@@ -52,13 +52,22 @@
 
             <div class="row">
               <div class="input-field col s12">
-                <textarea id="appointment_description" class="materialize-textarea" data-length="500"></textarea>
+                <textarea id="appointment_description" name="description" class="materialize-textarea" data-length="500"></textarea>
                 <label for="appointment_description">Description</label>
+              </div>
+              <div class="input-field col s6">
+                <select id="status_id" name="status_id" required>
+                  <option value="" disabled selected>Choose status</option>
+                  <option value="1">Done</option>
+                  <option value="2">Pending</option>
+                  <option value="3">Not Done</option>
+                </select>
+              
               </div>
             </div>
 
             <div class="button_wrapper">
-              <a href="/doctor" class="waves-effect waves-light btn">Create</a>
+              <button class="waves-effect waves-light btn" type="submit">Create</button>
             </div>
           </div>
         </div>
@@ -66,3 +75,37 @@
       </div>
     </form>
   </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.datepicker');
+      var instances = M.Datepicker.init(elems, {
+        format: 'yyyy-mm-dd',
+        autoClose: true
+      });
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.timepicker');
+      var instances = M.Timepicker.init(elems, {
+        defaultTime: 'now', // Set default time: 'now', '1:30AM', '16:30'
+        twelveHour: true, // Use AM/PM or 24-hour format
+        autoClose: false, // automatic close timepicker
+      });
+    });
+    {{#with appointment_new}}
+        document.addEventListener('DOMContentLoaded', function() {
+
+          {{!-- Use triple mustaches to NOT escape characters --}}
+
+          document.getElementById("patient_id").value = "{{{patient_id}}}";
+          document.getElementById("category_id").value = "{{{category_id}}}";
+          document.getElementById("appointment_date").value = "{{{appointment_date}}}";
+          document.getElementById("appointment_time").value = "{{{appointment_time}}}";
+          document.getElementById("length").value = "{{{length}}}";
+          document.getElementById("description").value = "{{{description}}}";
+          
+          var elems = document.querySelectorAll('select');
+          var instances = M.FormSelect.init(elems, {});
+      });
+
+    {{/with}}
+  </script>

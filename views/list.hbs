@@ -3,7 +3,7 @@
      <div class="container">
        <h1>Patient List</h1>
 
-       <a class="waves-effect waves-light btn">Click on a patient to create an appointment for them</a>
+       <h5 class="waves-effect waves-light">Click on a patient to create an appointment for them</h5>
         <table>
           <thead>
             <tr>
@@ -13,15 +13,17 @@
                 <th>Email</th>
             </tr>
           </thead>
-
           <tbody>
+            {{#each patients}}
             <tr>
-              <td><a href="/appointmentform">Bob</td></a>
-              <td><a href="/appointmentform">Jones</td></a>
-              <td>2014239345</td>
-              <td>jones@gmail.com</td>
+              <td><a href="/appointmentform/{{patient_id}}">{{first_name}}</td></a>
+              <td><a href="/appointmentform/{{patient_id}}">{{last_name}}</td></a>
+              <td>{{phone_number}}</td>
+              <td>{{email_address}}</td>
+              <td><a class="btn-floating waves-effect waves-light red"
+                onclick='confirmDelete("{{appointment_id}}","{{ appointment_id}}")'><i class="material-icons">delete</i></a></td>
             </tr>
-            
+            {{/each}}
           </tbody>
         </table>
          </div>

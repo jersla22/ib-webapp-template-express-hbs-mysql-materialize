@@ -1,5 +1,5 @@
 <main>
- <form id="create_update_appointment" method="post" action="/appointmentform">
+ <form id="create_update_appointment" method="POST" action="/modify">
       <!-- action and method depend on C vs U-->
       <input type="hidden" name="appointment_id" id="appointment_id" value="0">
       <!-- server sets event_id value-->
@@ -7,9 +7,8 @@
       <div class="container">
         <div class="card grey lighten-4">
           <div class="card-content">
-
             <span class="card-title">
-              <h1>Modify Appointment for id="patient_name"</h1>
+              <h1>Modify Appointment for {{appointment_data.first_name}} {{appointment_data.last_name}}</h1>
             </span>
 
 
@@ -19,11 +18,11 @@
             <div class="row">
               <div class="input-field col s6">
                 <select id="category_id" name="category_id" required>
-                  <option value="" disabled selected>Select a category</option>
-                  <option value="Screening">Screening</option>
-                  <option value="Consultation">Consultation</option>
-                  <option value="Pain Management">Pain Management</option>
-                  <option value="Prolotherapy">Prolotype</option>
+                  <option value="" disabled selected></option>
+                  <option value="1">Screening</option>
+                  <option value="2">Consultation</option>
+                  <option value="3">Pain Management</option>
+                  <option value="4">Prolotherapy</option>
                 </select>
               
               </div>
@@ -32,8 +31,8 @@
 
             <div class="row">
               <div class="input-field col s4">
-                <input type="text" id=event_date name="event_date" class="datepicker no-autoinit" required>
-                <label for="event_date">Date</label>
+                <input type="text" id=appointment_date name="appointment_date" class="datepicker no-autoinit" required>
+                <label for="appointment_date">Date</label>
               </div>
 
               <div class="input-field col s4">
@@ -43,21 +42,31 @@
               </div>
 
               <div class="input-field col s4">
-                <input type="number" id="appointment_duration" name="appointment_duration" min=0 step=15>
-                <label for="appointment_duration">Length</label>
+                <input type="number" id="appointment_duration" name="appointment_duration" min=0 step=5>
+                <label for="appointment_duration">Length (mins)</label>
 
               </div>
             </div>
 
             <div class="row">
               <div class="input-field col s12">
-                <textarea id="appointment_description" class="materialize-textarea" data-length="500"></textarea>
+                <textarea id="appointment_description" name="appointment_description" class="materialize-textarea" data-length="500"></textarea>
                 <label for="appointment_description">Description</label>
               </div>
             </div>
 
+            <div class="input-field col s6">
+                <select id="status_id" name="status_id" required>
+                  <option value="" disabled selected></option>
+                  <option value="1">Done</option>
+                  <option value="2">Pending</option>
+                  <option value="3">Not Done</option>
+                </select>
+              
+              </div>
+
             <div class="button_wrapper">
-              <a href="/doctor" class="waves-effect waves-light btn">Modify</a>
+              <button class="waves-effect waves-light btn" type="submit">Modify</button>
             </div>
           </div>
         </div>
@@ -65,3 +74,41 @@
       </div>
     </form>
   </main>
+
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.datepicker');
+      var instances = M.Datepicker.init(elems, {
+        format: 'yyyy-mm-dd',
+        autoClose: true
+      });
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.timepicker');
+      var instances = M.Timepicker.init(elems, {
+        defaultTime: 'now', // Set default time: 'now', '1:30AM', '16:30'
+        twelveHour: true, // Use AM/PM or 24-hour format
+        autoClose: false, // automatic close timepicker
+      });
+    });
+    {{#with appointment_data}}
+        document.addEventListener('DOMContentLoaded', function() {
+
+          {{!-- Use triple mustaches to NOT escape characters --}}
+
+          document.getElementById("appointment_id").value = "{{{appointment_id}}}"
+          document.getElementById("category_id").value = "{{{category_id}}}";
+          document.getElementById("appointment_date").value = "{{{appointment_date}}}";
+          document.getElementById("appointment_time").value = "{{{appointment_time}}}";
+          document.getElementById("appointment_duration").value = "{{{length}}}";
+          document.getElementById("appointment_description").value = "{{{description}}}";
+          document.getElementById("status_id").value = "{{{status_id}}}";
+          
+          var elems = document.querySelectorAll('select');
+          var instances = M.FormSelect.init(elems, {});
+      });
+
+    {{/with}}
+
+  </script>
