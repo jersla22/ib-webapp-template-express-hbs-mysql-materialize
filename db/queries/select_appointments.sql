@@ -16,4 +16,4 @@ WHERE
     patient.patient_id = appointment.patient_id
     and appointment.category_id = category.category_id
     and appointment.status_id = status.status_id
-ORDER BY patient.last_name
+ORDER BY appointment_date
