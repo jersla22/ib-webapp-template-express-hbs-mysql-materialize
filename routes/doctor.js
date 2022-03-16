@@ -18,15 +18,11 @@ router.get('/', async function(req, res, next) {
 
 });
 
-let delete_appointment_str = `
-DELETE
-FROM appointment
-WHERE 
-    appointment_id = ?
-`
+const delete_appointment_sql = fs.readFileSync(path.join(__dirname, "../db/queries/delete_appointment.sql"), "utf-8")
+
 router.get("/:appointment_id/delete", async function(req, res, next) {
   try{
-    let appointment_id = req.params.event_id;
+    let appointment_id = req.params.appointment_id;
 
     let results = await db.queryPromise(delete_appointment_sql, [appointment_id])
 

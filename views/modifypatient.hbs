@@ -1,5 +1,5 @@
 <main> 
-    <form id="create_patient" method="post" action="/patientform">
+    <form id="update_patient" method="post" action="/modifypatient">
       <!-- action and method depend on C vs U-->
       <input type="hidden" name="patient_id" id="patient_id" value="0">
       <!-- server sets event_id value-->
@@ -9,26 +9,26 @@
           <div class="card-content">
 
             <span class="card-title">
-              <h1>Create Patient</h1>
+              <h1>Modify Patient Information for {{first_name}} {{last_name}}</h1>
             </span>
 
 
             <div class="row">
               <div class="input-field col s12">
                 <textarea id="first_name" name="first_name" class="materialize-textarea" data-length="250"></textarea>
-                <label for="first_name">First Name</label>
+                <label for="first_name">{{first_name}}</label>
               </div>
             </div>
 
               <div class="input-field col s12">
                 <textarea id="last_name" name="last_name" class="materialize-textarea" data-length="250"></textarea>
-                <label for="last_name">Last Name</label>
+                <label for="last_name">{{last_name}}</label>
               </div>
             
 
               <div class="input-field col s12">
                 <textarea id="email_address" name="email_address" class="materialize-textarea" data-length="250"></textarea>
-                <label for="email_addres">Email</label>
+                <label for="email_addres">{{email_address}}</label>
               </div>
            
 
@@ -37,12 +37,12 @@
               <div class="input-field col s12">
                 <textarea id="phone_number" name="phone_number" rs
                 class="materialize-textarea" data-length="250"></textarea>
-                <label for="phone_number">Phone Number</label>
+                <label for="phone_number">{{phone_number}}</label>
               </div>
             
 
             <div class="button_wrapper">
-              <button class="waves-effect waves-light btn" type="submit">Create</button>
+              <button class="waves-effect waves-light btn" type="submit">Modify</button>
             </div>
           </div>
         </div>
@@ -51,7 +51,7 @@
     </form>
   </main>
   <script>
-    {{#with patient_data}}
+    {{#with mod_patient_data}}
         document.addEventListener('DOMContentLoaded', function() {
 
           {{!-- Use triple mustaches to NOT escape characters --}}

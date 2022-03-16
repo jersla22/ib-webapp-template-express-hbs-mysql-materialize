@@ -20,8 +20,10 @@
               <td><a href="/appointmentform/{{patient_id}}">{{last_name}}</td></a>
               <td>{{phone_number}}</td>
               <td>{{email_address}}</td>
+              <td><a class="btn-floating btn-small waves-effect waves-light green lighten-1" href="/modifypatient/{{patient_id}}"><i
+                class="material-icons">edit</i></a>
               <td><a class="btn-floating waves-effect waves-light red"
-                onclick='confirmDelete("{{appointment_id}}","{{ appointment_id}}")'><i class="material-icons">delete</i></a></td>
+                href="/list/{{patient_id}}/delete"><i class="material-icons">delete</i></a>
             </tr>
             {{/each}}
           </tbody>

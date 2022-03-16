@@ -35,8 +35,8 @@
               <td>{{status}}</td>
               <td><a class="btn-floating btn-small waves-effect waves-light green lighten-1" href="/modify/{{appointment_id}}"><i
                 class="material-icons">edit</i></a>
-              <a class="btn-floating waves-effect waves-light red"
-                onclick='confirmDelete("{{appointment_id}}","{{ appointment_id}}")'><i class="material-icons">delete</i></a>
+              <td><a class="btn-floating waves-effect waves-light red"
+                href="/doctor/{{appointment_id}}/delete"><i class="material-icons">delete</i></a>
             </tr>
             {{/each}}
             

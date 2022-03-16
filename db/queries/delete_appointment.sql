@@ -1,4 +1,4 @@
 DELETE
-FROM appointments
+FROM appointment
 WHERE 
     appointment_id = ?
