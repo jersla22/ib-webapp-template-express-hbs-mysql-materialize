@@ -7,4 +7,4 @@ SELECT
 FROM 
 	patient
 WHERE
-    patient.patient_id = ?
+    patient_id = ?

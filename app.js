@@ -11,6 +11,7 @@ var appointmentFormRouter = require('./routes/appointmentform');
 var doctorRouter = require('./routes/doctor');
 var listRouter = require('./routes/list');
 var modifyRouter = require('./routes/modify');
+var modifypatientRouter = require('./routes/modifypatient');
 var notifyRouter = require('./routes/notify');
 var modify2Router = require('./routes/modify2');
 var patientFormRouter = require('./routes/patientform');
@@ -36,6 +37,7 @@ app.use('/doctor', doctorRouter);
 app.use('/list', listRouter);
 app.use('/modify', modifyRouter);
 app.use('/modify2', modify2Router);
+app.use('/modifypatient', modifypatientRouter)
 app.use('/notify', notifyRouter);
 app.use('/patientform', patientFormRouter);
 app.use('/pending', pendingRouter);
