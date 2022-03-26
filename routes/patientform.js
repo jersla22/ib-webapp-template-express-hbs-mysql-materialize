@@ -6,12 +6,11 @@ const path = require('path');
 
 const db = require("../db/db");
 
-const create_patient_sql = fs.readFileSync(path.join(__dirname, "../db/queries/create_patient.sql"), "utf-8")
-
 router.get('/', function(req, res, next) {
   res.render('patientform', { title: 'Express', style: 'style.css' });
 });
 
+const create_patient_sql = fs.readFileSync(path.join(__dirname, "../db/queries/create_patient.sql"), "utf-8")
 
 router.post('/', async function(req, res, next){
 
